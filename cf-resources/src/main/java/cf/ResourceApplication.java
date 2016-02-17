@@ -17,15 +17,6 @@ import java.util.UUID;
 @RestController
 @EnableResourceServer
 class ResourceApplication {
-
-    @RequestMapping("/")
-    public Map<String,Object> home() {
-        Map<String,Object> model = new HashMap<String,Object>();
-        model.put("id", UUID.randomUUID().toString());
-        model.put("content", "Hello World");
-        return model;
-    }
-
     public static void main(String[] args) {
         SpringApplication.run (ResourceApplication.class, args);
     }
