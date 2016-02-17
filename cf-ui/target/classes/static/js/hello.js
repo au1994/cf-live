@@ -38,7 +38,7 @@ function($rootScope, $scope, $http, $location, $route) {
 	}
 
 }).controller('home', function($scope, $http) {
-	$http.get('resource/').success(function(data) {
+	$http.get('resource/urr/ur').success(function(data) {
 		console.log(data);
 		$scope.greeting = data;
 	})
