@@ -10,9 +10,9 @@ import java.util.List;
  * Created by abhishekupadhyay on 2016/02/16.
  */
 public class User {
-    String Email, Password, Id, CartId;
+    String Email, Password, Id, CartId, RegistrationDate, LastVisit;
     UserName Name;
-    Date Dob, RegistrationDate, LastVisit;
+    Date Dob;
     UserPhone Phone;
     List Addresses = new ArrayList<UserAddress>();
     List Orders = new ArrayList<String>();
@@ -21,7 +21,7 @@ public class User {
 
     }
 
-    User(UserName name, Date dob, Date registrationDate, Date lastVisit, UserPhone phone, List<UserAddress> addresses, List<String> orders, String email, String password, String cartId){
+    User(UserName name, Date dob, String registrationDate, String lastVisit, UserPhone phone, List<UserAddress> addresses, List<String> orders, String email, String password, String cartId){
         this.Name = name;
         this.Dob = dob;
         this.RegistrationDate = registrationDate;
@@ -32,15 +32,14 @@ public class User {
         this.Email = email;
         this.Password = password;
         this.CartId = cartId;
-        //System.out.print(Addresses.get(0)+"\t"+Addresses.get(1)+"\t"+Addresses.get(2));
     }
 
     public final DBObject toDBObject () {
         return new BasicDBObject("Name", this.getNameDBObject())
                 .append("DOB", this.getDobDBObject())
-                .append("RegistrationDate", this.getRegistrationDateDBObject())
-                .append("LastVisit", this.getLastVisitDBObject())
-                .append("Phone", this.getPhoneDBbject())
+                .append("RegistrationDate", this.getRegistrationDate())
+                .append("LastVisit", this.getLastVisit())
+                .append("Phone", this.getPhoneDBObject())
                 .append("Addresses", this.getAddressList())
                 .append("Orders", this.getOrders())
                 .append("Email", this.getEmail())
@@ -49,30 +48,20 @@ public class User {
                 .append("CartId", this.getCartId());
     }
 
-    public DBObject getLastVisitDBObject(){
-
-        return LastVisit.toDBObject();
-    }
-
-    public Date getLastVisit() {
+    public String getLastVisit() {
         return LastVisit;
     }
 
-    public void setLastVisit(Date lastVisit) {
+    public void setLastVisit(String lastVisit) {
         LastVisit = lastVisit;
     }
 
-    public Date getRegistrationDate() {
+    public String getRegistrationDate() {
 
         return RegistrationDate;
     }
 
-    public DBObject getRegistrationDateDBObject(){
-
-        return RegistrationDate.toDBObject();
-    }
-
-    public void setRegistrationDate(Date registrationDate) {
+    public void setRegistrationDate(String registrationDate) {
         RegistrationDate = registrationDate;
     }
 
@@ -115,7 +104,7 @@ public class User {
         return Phone;
     }
 
-    public DBObject getPhoneDBbject() {
+    public DBObject getPhoneDBObject() {
 
         return Phone.toDBObject();
     }
