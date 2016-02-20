@@ -12,9 +12,13 @@ public class UserAddress {
     String AddressLine2;
     String AddressLine3;
     String Pin;
-    String Phone;
+    UserPhone Phone;
 
-    UserAddress(UserName name, String addressLine1, String addressLine2, String addressLine3, String pin, String phone){
+    UserAddress() {
+
+    }
+
+    UserAddress(UserName name, String addressLine1, String addressLine2, String addressLine3, String pin, UserPhone phone){
         this.Name = name;
         this.AddressLine1 = addressLine1;
         this.AddressLine2 = addressLine2;
@@ -29,7 +33,7 @@ public class UserAddress {
                 .append("AddressLine2", this.getAddressLine2())
                 .append("AddressLine3", this.getAddressLine3())
                 .append("Pin", this.getPin())
-                .append("Phone", this.getPhone());
+                .append("Phone", this.getPhoneDBObject());
     }
 
     public String getPin() {
@@ -54,12 +58,17 @@ public class UserAddress {
         Name = name;
     }
 
-    public String getPhone() {
+    public UserPhone getPhone() {
 
         return Phone;
     }
 
-    public void setPhone(String phone) {
+    public DBObject getPhoneDBObject() {
+
+        return Phone.toDBObject();
+    }
+
+    public void setPhone(UserPhone phone) {
         Phone = phone;
     }
 
