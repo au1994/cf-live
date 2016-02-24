@@ -1,5 +1,6 @@
 package cf;
 
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -8,15 +9,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.mongodb.*;
-
-import java.util.*;
-
 import cf.CfService;
-import cf.User;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by abhishekupadhyay on 2016/02/16.
@@ -27,7 +26,6 @@ class UserController {
 
     private final CfService cfService;
 
-
     @Autowired
     UserController(CfService cfService)
     {
@@ -35,8 +33,7 @@ class UserController {
     }
 
     @RequestMapping(value="/ur")
-    public List<DBObject> home() {
-
+    public JSONArray home() {
 
 
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
@@ -60,16 +57,16 @@ class UserController {
 
 
 
-        DBObject dbobj = new BasicDBObject();
-        List<DBObject> dblist= null;
+
+
+        JSONArray jsarr = new JSONArray();
         try {
-            dblist = cfService.find(dbobj);
-            System.out.println(dblist);
+            jsarr = cfService.getAllUsers();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return dblist;
+        return jsarr;
     }
     }
 
