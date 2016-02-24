@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/art.cf.iml" filepath="$PROJECT_DIR$/art.cf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cf-authserver/cf-authserver.iml" filepath="$PROJECT_DIR$/cf-authserver/cf-authserver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cf-services/cf-services.iml" filepath="$PROJECT_DIR$/cf-services/cf-services.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cf-resources/cfresource.iml" filepath="$PROJECT_DIR$/cf-resources/cfresource.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cf-ui/cfui.iml" filepath="$PROJECT_DIR$/cf-ui/cfui.iml" />
+    </modules>
+  </component>
+</project>

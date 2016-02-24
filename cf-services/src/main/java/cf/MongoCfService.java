@@ -10,6 +10,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.repository.query.StringBasedMongoQuery;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,8 @@ import java.util.List;
 /**
  * Created by abhishekupadhyay on 2016/02/16.
  */
+@Service
+@Transactional
 public class MongoCfService implements CfService{
 
     DBCollection collection;
@@ -82,6 +86,10 @@ public class MongoCfService implements CfService{
         DBObject query = new BasicDBObject("_id", new ObjectId(id));
         DBCursor cursor = collection.find(query);
         return new JSONObject(cursor.next().toString());
+    }
+    public JSONArray getAllUsers() throws Exception {
+        DBCursor cursor = collection.find();
+        return  new JSONArray(cursor.toArray());
     }
 
     public void addToDB(JSONObject userJson) throws Exception {

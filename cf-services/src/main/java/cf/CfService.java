@@ -12,6 +12,8 @@ public interface CfService {
 
     public User createUser(JSONObject user);
 
+    public JSONArray getAllUsers() throws Exception;
+
     public JSONObject findById(String id) throws Exception;
 
     public void addToDB(JSONObject customer) throws Exception;

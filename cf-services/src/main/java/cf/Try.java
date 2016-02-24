@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Try {
     public static void main(String args[]){
-        try{
+        /*try{
             CfService cfs = new MongoCfService();
             JSONObject user = new JSONObject();
             JSONObject address1 = new JSONObject();
@@ -80,14 +80,14 @@ public class Try {
             User me = new User(name1, dob, registrationDate, lastVisit, phone, addresses, orders, "email@gmail.com", "password", "cartId1123104");
             cfs.addToDB(me.toDBObject());*/
 
-            cfs.addAddress("56c64cc7d5d608eaae6203b8", address1);
+            /*cfs.addAddress("56c64cc7d5d608eaae6203b8", address1);
 
-            /*cfs.addToDB(user);
+            cfs.addToDB(user);
             JSONObject wr = cfs.findById("56c619dad5d6c480522f1cb9");
             System.out.println(wr.toString());*/
-        }
+        /*}
         catch (Exception ex){
             System.out.println("Armaan"+ex.toString());
-        }
+        }*/
     }
 }
